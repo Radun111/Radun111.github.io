@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Raduni Thesanya, software developer from Sri Lanka: Java, Spring Boot, Next.js and real systems used every day.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://radun111.github.io/">
+<meta property="og:title" content="Raduni Thesanya | Software Developer Portfolio">
+<meta property="og:description" content="Software developer from Sri Lanka. Real systems used every day, plus projects in Spring Boot, React, Next.js and JavaFX.">
+<meta property="og:image" content="https://radun111.github.io/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/avatar.png">
+<title>Raduni Thesanya Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Chewy&family=Luckiest+Guy&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #FFDCEB;
+    --paper-2: #FFE6D8;
+    --ink: #4A2545;
+    --ink-soft: #6B4664;
+    --magenta: #B24592;
+    --blush: #FBC2EB;
+    --peri: #A6C1EE;
+    --band: #D9C6F5;
+    --band-ink: #4A2545;
+    --line: #E3AFC8;
+    --card: #FFFFFF;
+    --display: "Luckiest Guy", "Arial Black", Impact, sans-serif;
+    --head: "Chewy", "Comic Sans MS", "Trebuchet MS", sans-serif;
+    --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+    --hand: "Caveat", "Segoe Print", cursive;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--body); font-size: 16px; line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 3px dashed var(--magenta); outline-offset: 3px; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-inline: 20px; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1.5px dashed var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+  .logo { font-family: var(--display); font-size: 22px; color: var(--magenta); text-decoration: none; letter-spacing: 1px; }
+  .links { display: flex; gap: 18px; flex-wrap: wrap; font-weight: 700; font-size: 15px; }
+  .links a { text-decoration: none; }
+  .links a:hover { color: var(--magenta); }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; padding-block: 80px 70px; text-align: center; background: linear-gradient(180deg, #FFDCEB 0%, #F8D8F4 55%, #E6DDFC 100%); overflow: hidden; }
+  .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(8px); z-index: 0; pointer-events: none; }
+  .hero::before { width: 320px; height: 320px; left: -90px; bottom: -60px; background: radial-gradient(circle, #FFC2A8 0%, transparent 70%); opacity: .7; }
+  .hero::after { width: 380px; height: 380px; right: -110px; top: 40px; background: radial-gradient(circle, #B9CCFF 0%, transparent 70%); opacity: .8; }
+  .hero > * { position: relative; z-index: 1; }
+  .word {
+    font-family: var(--display); line-height: .8; color: var(--ink);
+    font-size: clamp(40px, 14vw, 190px);
+    display: inline-flex; flex-wrap: nowrap; justify-content: center; align-items: flex-end;
+    margin: 0; font-weight: 400;
+  }
+  .word span { display: inline-block; animation: drop .7s cubic-bezier(.3,1.6,.5,1) backwards; }
+  .word span:nth-child(1) { transform: rotate(-6deg); }
+  .word span:nth-child(2) { transform: translateY(18%) rotate(8deg) scale(.8); color: var(--magenta); animation-delay: .05s; }
+  .word span:nth-child(3) { transform: translateY(-22%) rotate(-4deg); animation-delay: .1s; }
+  .word span:nth-child(4) { transform: translateY(-48%) rotate(6deg) scale(1.15); animation-delay: .15s; }
+  .word span:nth-child(5) { transform: translateY(-10%) rotate(-10deg); color: var(--magenta); animation-delay: .2s; }
+  .word span:nth-child(6) { transform: translateY(12%) rotate(5deg) scale(.85); animation-delay: .25s; }
+  .word span:nth-child(7) { transform: translateY(-18%) rotate(-3deg) scale(1.05); animation-delay: .3s; }
+  .word span:nth-child(8) { transform: translateY(8%) rotate(7deg); color: var(--magenta); animation-delay: .35s; }
+  .word span:nth-child(9) { transform: translateY(-6%) rotate(-5deg) scale(.95); animation-delay: .4s; }
+  @keyframes drop { from { translate: 0 -60px; } }
+  .year {
+    position: absolute; top: 14px; right: max(20px, 6%);
+    font-family: var(--display); font-size: clamp(28px, 5vw, 56px); color: #7B8FE0;
+    transform: rotate(8deg);
+  }
+  .hero-avatar { display: block; position: relative; z-index: 2; width: clamp(190px, 30vw, 330px); height: auto; margin: -5% auto -6px; rotate: -3deg; }
+  .hero-sub { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 28px; }
+  .name-tag {
+    font-family: var(--head); font-size: clamp(24px, 4vw, 34px); color: var(--ink);
+    background: var(--blush); color: #4A2545; padding: 4px 22px; border-radius: 999px;
+    transform: rotate(-2deg); box-shadow: 4px 4px 0 var(--ink);
+  }
+  .role { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: 13px; color: var(--ink-soft); }
+  .scribble { font-family: var(--hand); font-size: 26px; color: var(--magenta); }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+  .btn {
+    font-family: var(--body); font-weight: 800; font-size: 15px; text-decoration: none;
+    padding: 10px 20px; border-radius: 12px; border: 2.5px solid var(--ink); cursor: pointer;
+    background: var(--card); color: var(--ink); box-shadow: 3px 3px 0 var(--ink);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn.primary { background: var(--magenta); color: #fff; }
+  .btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+  .star { position: absolute; color: var(--ink); }
+  .star.s1 { left: 6%; top: 60%; width: 44px; }
+  .star.s2 { right: 10%; bottom: 14%; width: 30px; color: var(--magenta); }
+  .plane { position: absolute; left: 4%; top: 18%; width: 90px; color: var(--ink-soft); }
+
+  /* torn edges */
+  .tear { display: block; width: 100%; height: 36px; }
+  .tear path { fill: var(--paper-2); }
+  .tear.to-band path { fill: var(--band); }
+  .tear.from-band { transform: scaleY(-1); }
+  .tear.from-band path { fill: var(--band); }
+
+  /* ---------- ABOUT ---------- */
+  .about { background-color: var(--paper-2); background-image: radial-gradient(rgba(178,69,146,.16) 1.6px, transparent 1.7px); background-size: 24px 24px; padding-block: 40px 60px; }
+  .about-grid { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
+  .badge-hold { position: relative; display: flex; flex-direction: column; align-items: center; transform-origin: top center; animation: sway 5s ease-in-out infinite; }
+  @keyframes sway { 0%,100% { rotate: -3deg; } 50% { rotate: 3deg; } }
+  .lanyard { width: 120px; height: 120px; }
+  .card-id {
+    width: 220px; margin-top: -6px; background: rgba(255,255,255,.55);
+    border: 2px solid rgba(74,37,69,.25); border-radius: 18px; padding: 14px;
+    box-shadow: 0 18px 30px -12px rgba(74,37,69,.45); backdrop-filter: blur(2px);
+  }
+  .card-id .slot { width: 46px; height: 8px; border-radius: 6px; background: rgba(74,37,69,.3); margin: 0 auto 12px; }
+  .photo {
+    aspect-ratio: 3/4; width: 100%; border-radius: 10px; overflow: hidden;
+    background: linear-gradient(160deg, var(--blush), var(--peri));
+    display: grid; place-items: center; position: relative;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo .initials { font-family: var(--display); font-size: 72px; color: #4A2545; }
+  .card-id .id-name { font-family: var(--head); text-align: center; color: #4A2545; font-size: 20px; margin-top: 8px; }
+  .card-id .id-role { text-align: center; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #6B4664; }
+
+  h2 { font-family: var(--head); font-weight: 400; font-size: clamp(38px, 6vw, 56px); line-height: 1; margin: 0 0 14px; text-wrap: balance; }
+  h2 em { font-style: normal; color: var(--magenta); }
+  .about p { max-width: 62ch; margin: 0 0 12px; }
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 30px; }
+  .col { border-left: 2px dashed var(--line); padding-left: 18px; }
+  .col h3 { font-family: var(--head); font-weight: 400; font-size: 26px; margin: 0 0 10px; color: var(--magenta); }
+  .item { margin-bottom: 12px; }
+  .item b { display: block; font-size: 15px; line-height: 1.3; }
+  .item small { font-size: 13px; color: var(--ink-soft); }
+  .tiles { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tile {
+    width: 46px; height: 46px; border-radius: 10px; display: grid; place-items: center;
+    font-weight: 800; font-size: 14px; color: #fff; box-shadow: 2px 2px 0 var(--ink);
+  }
+  .tile-label { font-size: 13px; color: var(--ink-soft); margin-top: 8px; }
+  .contact-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 14px; word-break: break-all; }
+  .contact-row .ic { flex: none; width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: var(--ink); color: var(--paper); font-weight: 800; font-size: 12px; }
+  .copy { font: inherit; font-size: 12px; font-weight: 800; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); border-radius: 6px; padding: 1px 8px; cursor: pointer; flex: none; }
+
+  /* ---------- PROJECTS ---------- */
+  .projects { background: var(--band); color: var(--band-ink); padding-block: 40px 70px; }
+  .outline-word {
+    position: relative; text-align: center; font-family: var(--display);
+    font-size: clamp(56px, 13vw, 170px); line-height: 1; margin: 0 0 30px;
+    color: transparent; -webkit-text-stroke: 2px var(--band-ink); letter-spacing: .02em;
+  }
+  .outline-word .n { position: absolute; font-family: var(--hand); -webkit-text-stroke: 0; font-size: .38em; color: var(--magenta); }
+  .intro { text-align: center; max-width: 56ch; margin: -10px auto 36px; color: var(--band-ink); opacity: .85; }
+  .panels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .panel { display: flex; flex-direction: column; gap: 12px; }
+  .panel .block {
+    position: relative; border-radius: 6px; min-height: 330px; padding: 16px 14px;
+    background: var(--c); color: #3A1B36; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform .25s;
+  }
+  .panel:hover .block { transform: translateY(-8px) rotate(-1deg); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 11px; font-weight: 800; background: rgba(255,255,255,.7); padding: 2px 8px; border-radius: 999px; }
+  .big-n { font-family: var(--display); font-size: 150px; line-height: .8; color: #fff; text-shadow: 3px 3px 0 rgba(58,27,54,.25); margin-bottom: -18px; }
+  .panel h3 { font-family: var(--head); font-weight: 400; font-size: 22px; margin: 0; letter-spacing: .02em; line-height: 1.1; }
+  .panel p { margin: 0; font-size: 14px; opacity: .88; }
+  .plinks { display: flex; gap: 12px; flex-wrap: wrap; font-size: 13px; font-weight: 800; }
+  .plinks a { color: var(--magenta); }
+  .plinks span { opacity: .6; }
+  .tag { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--magenta); margin-bottom: -6px; }
+
+
+  /* screenshots */
+  .shot {
+    position: absolute; left: 50%; top: 46%; width: 86%; aspect-ratio: 16/10; object-fit: cover; object-position: top;
+    transform: translate(-50%, -50%) rotate(-3deg); border: 4px solid #fff; border-radius: 8px; background: #fff;
+    box-shadow: 0 14px 26px -10px rgba(58,27,54,.55); transition: transform .25s;
+  }
+  .shot.second { transform: translate(-44%, -30%) rotate(4deg); width: 70%; opacity: .95; }
+  .panel.has-shots .block { cursor: zoom-in; }
+  .panel.has-shots:hover .shot:not(.second) { transform: translate(-50%, -54%) rotate(-1deg) scale(1.04); }
+  .big-n, .chips { position: relative; z-index: 1; }
+  .view-btn { font: inherit; font-size: 13px; font-weight: 800; background: none; border: 0; padding: 0; color: var(--blush); text-decoration: underline; cursor: pointer; }
+  .view-btn { color: var(--magenta); }
+  .view-btn[hidden] { display: none; }
+  .lb {
+    position: fixed; inset: 0; z-index: 50; background: rgba(28,12,27,.92);
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px;
+    padding: calc(16px + env(safe-area-inset-top, 0px)) 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+  .lb[hidden] { display: none; }
+  .lb figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
+  .lb img { max-width: 100%; max-height: 78vh; border-radius: 10px; border: 4px solid #fff; background: #fff; }
+  .lb figcaption { color: #FCEAF4; font-weight: 700; font-size: 14px; text-align: center; }
+  .lb button { font: inherit; color: #4A2545; background: #FBC2EB; border: 0; border-radius: 999px; width: 44px; height: 44px; font-size: 24px; font-weight: 800; cursor: pointer; box-shadow: 3px 3px 0 #000; }
+  .lb .lb-x { position: absolute; top: calc(12px + env(safe-area-inset-top, 0px)); right: 16px; }
+  @media (max-width: 520px) { .lb { grid-template-columns: 1fr; } .lb-prev, .lb-next { display: none; } }
+
+  /* ---------- FOOTER ---------- */
+  footer { padding-block: 50px 40px; text-align: center; background: linear-gradient(180deg, var(--paper) 0%, #FFD0C2 100%); }
+  footer .scribble { font-size: 30px; }
+  footer p { margin: 6px 0; }
+  .foot-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 18px 0; }
+  .fine { font-size: 13px; color: var(--ink-soft); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 960px) {
+    .panels { grid-template-columns: 1fr 1fr; }
+    .panel:last-child { grid-column: 1 / -1; }
+    .panel:last-child .block { min-height: 220px; }
+  }
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; gap: 20px; }
+    .three { grid-template-columns: 1fr; gap: 22px; }
+    .links { display: none; }
+    .plane, .star.s1 { display: none; }
+  }
+  @media (max-width: 520px) {
+    .panels { grid-template-columns: 1fr; }
+    .panel .block { min-height: 220px; }
+    .big-n { font-size: 110px; }
+    .year { top: 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">RT.</a>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="plane" viewBox="0 0 120 60" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M4 50 C 30 40, 40 10, 70 22" stroke-dasharray="4 6"/>
+    <path d="M78 20 L116 6 L96 40 L88 28 Z M88 28 L116 6"/>
+  </svg>
+  <span class="year">'26</span>
+  <h1 class="word" aria-label="Portfolio">
+    <span>P</span><span>O</span><span>R</span><span>T</span><span>F</span><span>O</span><span>L</span><span>I</span><span>O</span>
+  </h1>
+  <img class="hero-avatar" src="images/avatar.png" alt="Drawing of Raduni" onerror="this.remove()">
+  <div class="hero-sub">
+    <div class="name-tag">Raduni Thesanya</div>
+    <div class="role">Aspiring Software Engineer · Java Developer</div>
+    <div class="scribble">building clean, reliable systems ✦</div>
+    <div class="cta">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn" href="https://github.com/Radun111" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+  <svg class="star s1" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><path d="M20 0 L23 17 L40 20 L23 23 L20 40 L17 23 L0 20 L17 17 Z"/></svg>
+  <svg class="star s2" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><path d="M20 0 L23 17 L40 20 L23 23 L20 40 L17 23 L0 20 L17 17 Z"/></svg>
+</header>
+
+<svg class="tear" viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true" style="background:#E6DDFC">
+  <path d="M0 36 L0 22 L40 14 L70 24 L110 8 L150 20 L190 12 L230 26 L270 10 L320 22 L360 6 L400 18 L450 12 L490 24 L530 8 L580 20 L620 14 L660 26 L700 10 L750 20 L790 6 L830 22 L880 12 L920 24 L960 8 L1010 18 L1050 12 L1090 26 L1130 10 L1170 20 L1200 14 L1200 36 Z"/>
+</svg>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="badge-hold" aria-hidden="true">
+      <svg class="lanyard" viewBox="0 0 120 120" fill="none">
+        <path d="M30 0 C 30 60, 50 90, 60 110 M90 0 C 90 60, 70 90, 60 110" stroke="#B24592" stroke-width="10" stroke-linecap="round"/>
+        <rect x="52" y="100" width="16" height="20" rx="3" fill="#9AA3B5"/>
+      </svg>
+      <div class="card-id">
+        <div class="slot"></div>
+        <div class="photo">
+          <!-- ID card picture: images/photo.jpg -->
+          <img src="images/photo.jpg" alt="Raduni Thesanya" onerror="this.remove()">
+          <span class="initials">RT</span>
+        </div>
+        <div class="id-name">Raduni Thesanya</div>
+        <div class="id-role">Software Engineering Student</div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Hi, I'm <em>Raduni</em></h2>
+      <p>I'm an aspiring software engineer who loves turning messy, real-world problems into clean and reliable systems. I focus on Java and databases, and I'm now building full-stack web apps and learning AI and machine learning.</p>
+      <p>Outside the classroom I build real tools for real people: an office management system and a ballet waiting-list system that staff at Russian House Colombo use every day, and the online store for D Senaya Craft, a handmade craft brand.</p>
+
+      <div class="three">
+        <div class="col">
+          <h3>Experience</h3>
+          <div class="item"><b>Software Developer &amp; Administrative Support</b><small>Russian House Colombo · Present</small></div>
+          <div class="item"><b>Web Developer</b><small>D Senaya Craft · Present</small></div>
+          <h3 style="margin-top:18px">Education</h3>
+          <div class="item"><b>HND in Computing</b><small>ESOFT Metro Campus</small></div>
+          <div class="item"><b>CMJD (Java Development)</b><small>IJSE</small></div>
+          <div class="item"><b>Certified AI &amp; ML Engineer</b><small>IJSE · in progress</small></div>
+        </div>
+        <div class="col">
+          <h3>Skills</h3>
+          <div class="tiles">
+            <div class="tile" style="background:#E75480" title="Java">Jv</div>
+            <div class="tile" style="background:#D8859E" title="MySQL">SQL</div>
+            <div class="tile" style="background:#6B8FD6" title="TypeScript">TS</div>
+            <div class="tile" style="background:#4A2545" title="Next.js">Nx</div>
+            <div class="tile" style="background:#8A6BC4" title="Python">Py</div>
+            <div class="tile" style="background:#B784B7" title="Git &amp; GitHub">Git</div>
+            <div class="tile" style="background:#5E9E7A" title="Excel">XL</div>
+          </div>
+          <div class="tile-label">Java · MySQL · TypeScript · Next.js · Python · Git &amp; GitHub · Excel</div>
+        </div>
+        <div class="col" id="contact">
+          <h3>Contact</h3>
+          <div class="contact-row"><span class="ic">@</span><a href="mailto:thesanyaraduni@gmail.com" id="email">thesanyaraduni@gmail.com</a><button class="copy" id="copyBtn" type="button">Copy</button></div>
+          <div class="contact-row"><span class="ic">in</span><a href="https://www.linkedin.com/in/raduni-thesanya/" target="_blank" rel="noopener">linkedin.com/in/raduni-thesanya</a></div>
+          <div class="contact-row"><span class="ic">gh</span><a href="https://github.com/Radun111" target="_blank" rel="noopener">github.com/Radun111</a></div>
+          <div class="contact-row"><span class="ic">📍</span><span>Panadura, Sri Lanka</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="tear to-band" viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true" style="background:var(--paper-2)">
+  <path d="M0 36 L0 16 L50 26 L90 10 L140 22 L180 6 L230 20 L270 12 L320 28 L360 10 L410 22 L450 8 L500 18 L540 26 L590 10 L630 20 L680 6 L720 24 L770 12 L810 22 L860 8 L900 18 L950 28 L990 12 L1040 22 L1080 6 L1130 20 L1170 12 L1200 22 L1200 36 Z"/>
+</svg>
+
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="outline-word" aria-label="Projects">PROJECTS
+      <span class="n" style="left:8%;top:-4%">01</span>
+      <span class="n" style="left:28%;bottom:-8%">02</span>
+      <span class="n" style="left:48%;top:-12%">03</span>
+      <span class="n" style="left:66%;bottom:-6%">04</span>
+      <span class="n" style="right:6%;top:-8%">05</span>
+    </div>
+    <p class="intro">Things I've designed and built, from university coursework to systems people use every day.</p>
+
+    <div class="panels">
+      <article class="panel" data-shots="rhms" data-name="Russian House Management System">
+        <div class="block" style="--c:#FBC2EB">
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Supabase</span><span class="chip">Vercel</span><span class="chip">SMS API</span></div>
+          <div class="big-n">1</div>
+        </div>
+        <span class="tag">Work project · In daily use</span>
+        <h3>Russian House Management System</h3>
+        <p>Replaced the office's manual Excel workflow for 5 subjects across 4 schools. Handles student registration, payments with SMS receipts, monthly accounts, teacher records and financial reports, with role-based access and audit logs.</p>
+        <div class="plinks"><span>Private · Demo on request</span></div>
+      </article>
+
+      <article class="panel" data-shots="waitlist" data-name="Ballet Waiting List">
+        <div class="block" style="--c:#C9B6EE">
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">Supabase</span><span class="chip">Tailwind</span><span class="chip">SMS API</span></div>
+          <div class="big-n">2</div>
+        </div>
+        <span class="tag">Work project</span>
+        <h3>Ballet Waiting List</h3>
+        <p>Replaced a paper logbook for ballet enquiries. Each child gets a reference number and an SMS confirmation, and when a class opens, families whose available days match get an SMS inviting them to confirm.</p>
+        <div class="plinks"><span>Private · Demo on request</span></div>
+      </article>
+
+      <article class="panel" data-shots="lostfound" data-name="Campus Lost &amp; Found">
+        <div class="block" style="--c:#A6C1EE">
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">React</span><span class="chip">MySQL</span><span class="chip">JWT</span></div>
+          <div class="big-n">3</div>
+        </div>
+        <span class="tag">Academic project</span>
+        <h3>Campus Lost &amp; Found</h3>
+        <p>A full-stack system where students report lost items and claim found ones, with JWT login, role-based dashboards for students, staff and admins, and email alerts.</p>
+        <div class="plinks"><a href="https://github.com/Radun111/campus-lost-and-found." target="_blank" rel="noopener">Backend ↗</a><a href="https://github.com/Radun111/lost-and-found-frontend" target="_blank" rel="noopener">Frontend ↗</a></div>
+      </article>
+
+      <article class="panel" data-shots="crs" data-name="Course Registration System">
+        <div class="block" style="--c:#B8E0C8">
+          <div class="chips"><span class="chip">JavaFX</span><span class="chip">MySQL</span><span class="chip">MVC</span></div>
+          <div class="big-n">4</div>
+        </div>
+        <span class="tag">Academic project</span>
+        <h3>Course Registration System</h3>
+        <p>A desktop app where students register for courses and view grades, and admins manage courses, enrollments and reports.</p>
+        <div class="plinks"><a href="https://github.com/Radun111/coursework" target="_blank" rel="noopener">Code ↗</a></div>
+      </article>
+
+      <article class="panel" data-shots="dsenaya" data-name="D Senaya Craft Store">
+        <div class="block" style="--c:#F7B7C8">
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">v0</span></div>
+          <div class="big-n">5</div>
+        </div>
+        <span class="tag">Web project</span>
+        <h3>D Senaya Craft Store</h3>
+        <p>An online shop for D Senaya Craft, a handmade craft brand, with a product catalogue, LKR pricing and WhatsApp ordering with islandwide delivery.</p>
+        <div class="plinks"><span>Live site coming soon</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<svg class="tear from-band" viewBox="0 0 1200 36" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 36 L0 16 L50 26 L90 10 L140 22 L180 6 L230 20 L270 12 L320 28 L360 10 L410 22 L450 8 L500 18 L540 26 L590 10 L630 20 L680 6 L720 24 L770 12 L810 22 L860 8 L900 18 L950 28 L990 12 L1040 22 L1080 6 L1130 20 L1170 12 L1200 22 L1200 36 Z"/>
+</svg>
+
+<footer>
+  <div class="wrap">
+    <div class="scribble">Let's build something beautiful together ✦</div>
+    <p>Open to internships and collaborations.</p>
+    <div class="foot-links">
+      <a class="btn primary" href="mailto:thesanyaraduni@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/raduni-thesanya/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Radun111" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p class="fine">© 2026 Raduni Thesanya · Made with Java-powered coffee</p>
+  </div>
+</footer>
+
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Project screenshots">
+  <button class="lb-x" id="lbClose" type="button" aria-label="Close">×</button>
+  <button class="lb-prev" id="lbPrev" type="button" aria-label="Previous screenshot">‹</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-next" id="lbNext" type="button" aria-label="Next screenshot">›</button>
+</div>
+
+<script>
+  /* ---- Project screenshots ----
+     Put screenshots in the images folder named like rhms-1.png, rhms-2.png ...
+     (jpg or png). Prefixes: rhms, waitlist, lostfound, crs, dsenaya.
+     Panels with no screenshots keep their plain design. */
+  (function () {
+    var MAX = 10, EXTS = ['jpg', 'png'];
+    var lb = document.getElementById('lb'), img = document.getElementById('lbImg'), cap = document.getElementById('lbCap');
+    var cur = null, idx = 0;
+    function probe(src) {
+      return new Promise(function (res) { var i = new Image(); i.onload = function () { res(src); }; i.onerror = function () { res(null); }; i.src = src; });
+    }
+    function findShots(key) {
+      var tries = [];
+      for (var n = 1; n <= MAX; n++) {
+        tries.push((function (n) {
+          return probe('images/' + key + '-' + n + '.' + EXTS[0]).then(function (a) { return a || probe('images/' + key + '-' + n + '.' + EXTS[1]); });
+        })(n));
+      }
+      return Promise.all(tries).then(function (r) { return r.filter(Boolean); });
+    }
+    function show() {
+      img.src = cur.shots[idx];
+      img.alt = cur.name + ' screenshot ' + (idx + 1);
+      cap.textContent = cur.name + ' · ' + (idx + 1) + ' / ' + cur.shots.length;
+    }
+    function open(p, i) { cur = p; idx = i || 0; show(); lb.hidden = false; document.getElementById('lbClose').focus(); }
+    function close() { lb.hidden = true; if (cur) cur.opener.focus(); }
+    function step(d) { idx = (idx + d + cur.shots.length) % cur.shots.length; show(); }
+    document.getElementById('lbClose').onclick = close;
+    document.getElementById('lbPrev').onclick = function () { step(-1); };
+    document.getElementById('lbNext').onclick = function () { step(1); };
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1);
+    });
+    document.querySelectorAll('.panel[data-shots]').forEach(function (panel) {
+      var tmp = document.createElement('div'); tmp.innerHTML = panel.dataset.name;
+      findShots(panel.dataset.shots).then(function (shots) {
+        if (!shots.length) return;
+        var block = panel.querySelector('.block');
+        if (shots[1]) { var b = document.createElement('img'); b.className = 'shot second'; b.src = shots[1]; b.alt = ''; block.appendChild(b); }
+        var a = document.createElement('img'); a.className = 'shot'; a.src = shots[0]; a.alt = ''; block.appendChild(a);
+        var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'view-btn';
+        btn.textContent = 'Screenshots (' + shots.length + ')';
+        panel.querySelector('.plinks').prepend(btn);
+        panel.classList.add('has-shots');
+        var p = { name: tmp.textContent, shots: shots, opener: btn };
+        btn.onclick = function () { open(p, 0); };
+        block.onclick = function () { open(p, 0); };
+      });
+    });
+  })();
+
+  document.getElementById('copyBtn').addEventListener('click', function () {
+    var btn = this, text = 'thesanyaraduni@gmail.com';
+    function done() { btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy'; }, 1500); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected';
+    }
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+</script>
+</body>
+</html>
