@@ -221,6 +221,12 @@
   .design .dsub { text-align: center; margin: 0 auto 26px; max-width: 52ch; opacity: .85; }
   .dcard { display: grid; grid-template-columns: 1.35fr 1fr; background: #FFF6EC; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 50px -24px rgba(74,37,69,.5); color: #4B2E2B; }
   .dcard img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .dmain { padding: 0; border: 0; background: none; cursor: zoom-in; display: block; width: 100%; height: 100%; }
+  .dthumbs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .dthumbs button { padding: 0; border: 2px solid #fff; border-radius: 10px; overflow: hidden; background: #fff; aspect-ratio: 9 / 19.5; cursor: zoom-in; box-shadow: 0 6px 14px -8px rgba(74,37,69,.5); transition: transform .2s; }
+  .dthumbs button:hover { transform: translateY(-3px); }
+  .dthumbs img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  @media (max-width: 420px) { .dthumbs { grid-template-columns: repeat(3, 1fr); } }
   .dbody { padding: 26px 28px; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
   .dbody .tag { color: #C9456B; margin: 0; }
   .dbody h3 { font-family: var(--head); font-weight: 400; font-size: 32px; margin: 0; line-height: 1.05; }
@@ -438,7 +444,7 @@
       <h2 class="dh">Design</h2>
       <p class="dsub">UI/UX work: research, wireframes, visual design and prototypes.</p>
       <article class="dcard">
-        <a href="https://radun111.github.io/sugar-bloom-app/" target="_blank" rel="noopener"><img src="images/sugar-bloom.jpg" alt="Sugar Bloom app screens: home, cake builder and order tracking"></a>
+        <button type="button" class="dmain" data-gallery-open="0" aria-label="Open Sugar Bloom screenshots"><img src="images/sugar-bloom.jpg" alt="Sugar Bloom app screens: home, cake builder and menu"></button>
         <div class="dbody">
           <span class="tag">UI/UX case study · Concept</span>
           <h3>✿ Sugar Bloom</h3>
@@ -448,9 +454,9 @@
             <li>Fixed delivery time slots and a full price breakdown</li>
             <li>Brand, style guide, wireframes and 6 final screens</li>
           </ul>
-          <div class="chips"><span class="chip">UI/UX</span><span class="chip">Mobile</span><span class="chip">Prototype</span><span class="chip">Branding</span></div>
+          <div class="dthumbs" id="sugarThumbs"><button type="button" data-i="0" aria-label="Open Home screen"><img src="images/sugar-1.jpg" alt="" loading="lazy"></button><button type="button" data-i="1" aria-label="Open Menu screen"><img src="images/sugar-2.jpg" alt="" loading="lazy"></button><button type="button" data-i="2" aria-label="Open Cake builder screen"><img src="images/sugar-3.jpg" alt="" loading="lazy"></button><button type="button" data-i="3" aria-label="Open Delivery screen"><img src="images/sugar-4.jpg" alt="" loading="lazy"></button><button type="button" data-i="4" aria-label="Open Checkout screen"><img src="images/sugar-5.jpg" alt="" loading="lazy"></button><button type="button" data-i="5" aria-label="Open Order tracking screen"><img src="images/sugar-6.jpg" alt="" loading="lazy"></button></div>
           <div class="dlinks">
-            <a class="btn primary" href="https://radun111.github.io/sugar-bloom-app/" target="_blank" rel="noopener">Try the prototype</a>
+            <button type="button" class="btn primary" id="sugarBtn">View screenshots (6)</button>
             <a class="btn" href="https://github.com/Radun111/sugar-bloom-app" target="_blank" rel="noopener">Read the case study</a>
           </div>
         </div>
@@ -537,6 +543,15 @@
         block.onclick = function () { open(p, 0); };
       });
     });
+    // Sugar Bloom design screenshots
+    var sugarBtn = document.getElementById('sugarBtn');
+    if (sugarBtn) {
+      var sugar = { name: 'Sugar Bloom', shots: [1, 2, 3, 4, 5, 6].map(function (n) { return 'images/sugar-' + n + '.jpg'; }), opener: sugarBtn };
+      sugarBtn.onclick = function () { open(sugar, 0); };
+      document.querySelectorAll('#sugarThumbs button, [data-gallery-open]').forEach(function (b) {
+        b.onclick = function () { sugar.opener = b; open(sugar, +(b.dataset.i || b.dataset.galleryOpen || 0)); };
+      });
+    }
   })();
 
   document.getElementById('copyBtn').addEventListener('click', function () {
