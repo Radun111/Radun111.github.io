@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Portfolio of Raduni Thesanya, aspiring software engineer and Java developer from Sri Lanka.">
+<meta name="description" content="Portfolio of Raduni Thesanya, software developer from Sri Lanka: Java, Spring Boot, Next.js and real systems used every day.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://radun111.github.io/">
+<meta property="og:title" content="Raduni Thesanya | Software Developer Portfolio">
+<meta property="og:description" content="Software developer from Sri Lanka. Real systems used every day, plus projects in Spring Boot, React, Next.js and JavaFX.">
+<meta property="og:image" content="https://radun111.github.io/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/avatar.png">
 <title>Raduni Thesanya Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -205,6 +214,23 @@
   .lb .lb-x { position: absolute; top: calc(12px + env(safe-area-inset-top, 0px)); right: 16px; }
   @media (max-width: 520px) { .lb { grid-template-columns: 1fr; } .lb-prev, .lb-next { display: none; } }
 
+
+  /* design case study */
+  .design { margin-top: 64px; }
+  .design .dh { font-family: var(--head); font-weight: 400; font-size: clamp(34px, 5vw, 48px); text-align: center; margin: 0 0 6px; }
+  .design .dsub { text-align: center; margin: 0 auto 26px; max-width: 52ch; opacity: .85; }
+  .dcard { display: grid; grid-template-columns: 1.35fr 1fr; background: #FFF6EC; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 50px -24px rgba(74,37,69,.5); color: #4B2E2B; }
+  .dcard img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .dbody { padding: 26px 28px; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+  .dbody .tag { color: #C9456B; margin: 0; }
+  .dbody h3 { font-family: var(--head); font-weight: 400; font-size: 32px; margin: 0; line-height: 1.05; }
+  .dbody p { margin: 0; font-size: 15px; }
+  .dbody ul { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6; }
+  .dbody .chips .chip { background: #FBE3EA; }
+  .dlinks { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .dlinks .btn { font-size: 14px; padding: 9px 16px; }
+  @media (max-width: 760px) { .dcard { grid-template-columns: 1fr; } }
+
   /* ---------- FOOTER ---------- */
   footer { padding-block: 50px 40px; text-align: center; background: linear-gradient(180deg, var(--paper) 0%, #FFD0C2 100%); }
   footer .scribble { font-size: 30px; }
@@ -244,6 +270,7 @@
     <div class="links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#design">Design</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -404,6 +431,29 @@
         <h3>D Senaya Craft Store</h3>
         <p>An online shop for D Senaya Craft, a handmade craft brand, with a product catalogue, LKR pricing and WhatsApp ordering with islandwide delivery.</p>
         <div class="plinks"><span>Live site coming soon</span></div>
+      </article>
+    </div>
+
+    <div class="design" id="design">
+      <h2 class="dh">Design</h2>
+      <p class="dsub">UI/UX work: research, wireframes, visual design and prototypes.</p>
+      <article class="dcard">
+        <a href="https://radun111.github.io/sugar-bloom-app/" target="_blank" rel="noopener"><img src="images/sugar-bloom.jpg" alt="Sugar Bloom app screens: home, cake builder and order tracking"></a>
+        <div class="dbody">
+          <span class="tag">UI/UX case study · Concept</span>
+          <h3>✿ Sugar Bloom</h3>
+          <p>A mobile app that makes ordering a custom cake simple, replacing back-and-forth WhatsApp messages with one clear flow.</p>
+          <ul>
+            <li>Cake builder with a live preview and live price</li>
+            <li>Fixed delivery time slots and a full price breakdown</li>
+            <li>Brand, style guide, wireframes and 6 final screens</li>
+          </ul>
+          <div class="chips"><span class="chip">UI/UX</span><span class="chip">Mobile</span><span class="chip">Prototype</span><span class="chip">Branding</span></div>
+          <div class="dlinks">
+            <a class="btn primary" href="https://radun111.github.io/sugar-bloom-app/" target="_blank" rel="noopener">Try the prototype</a>
+            <a class="btn" href="https://github.com/Radun111/sugar-bloom-app" target="_blank" rel="noopener">Read the case study</a>
+          </div>
+        </div>
       </article>
     </div>
   </div>
